@@ -40,7 +40,7 @@ public class InterfaceManager : MonoBehaviour
         {
             brainCamera.enabled = false;
             OnCanMovedChanged?.Invoke(this, new CanMovedPlayerEvent(false));
-            rectTransformInterface.sizeDelta = new Vector2(150, 150);
+            rectTransformInterface.sizeDelta = new Vector2(-4, 10);
             inventory.SetActive(true);
             Sequence sequence = DOTween.Sequence();
             sequence.AppendInterval(0.1f)
@@ -49,8 +49,8 @@ public class InterfaceManager : MonoBehaviour
         }
         else
         {
-            rectTransformInterface.DOSizeDelta(new Vector2(rectTransformInterface.sizeDelta.x, 150), timeAnimation).OnComplete(() => 
-            rectTransformInterface.DOSizeDelta(new Vector2(150, rectTransformInterface.sizeDelta.y), timeAnimation).OnComplete(() =>
+            rectTransformInterface.DOSizeDelta(new Vector2(rectTransformInterface.sizeDelta.x, 10), timeAnimation).OnComplete(() => 
+            rectTransformInterface.DOSizeDelta(new Vector2(-4, rectTransformInterface.sizeDelta.y), timeAnimation).OnComplete(() =>
             inventory.SetActive(false)));
             brainCamera.enabled = true;
             OnCanMovedChanged?.Invoke(this, new CanMovedPlayerEvent(true));
